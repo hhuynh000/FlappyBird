@@ -1,6 +1,0 @@
-module pipeMap (newPipe, rng)
-	input logic [5:0] rng;
-	output logic [15:0] newPipe;
-	
-	
-endmodule

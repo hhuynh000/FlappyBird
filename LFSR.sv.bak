@@ -1,7 +1,0 @@
-module LFSR (clk, reset, Q);
-	input logic clk, reset;
-	output logic [9:0] Q;
-	
-	logic D;
-	assign D = ~(Q[7] ^ Q[10]);
-endmodule
