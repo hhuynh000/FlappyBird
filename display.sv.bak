@@ -1,0 +1,7 @@
+module display (clk, reset, RedPixels, GrnPixels, in);
+
+
+
+
+endmodule
+

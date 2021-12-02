@@ -1,0 +1,10 @@
+module start (clk, reset, startGame, play)
+	input logic clk, reset, play;
+	output logic startGame;
+	
+	enum {off, on} ps, ns;
+	
+	always_ff @(posedge clk) begin
+		if (reset)
+			
+endmodule

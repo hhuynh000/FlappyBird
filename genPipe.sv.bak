@@ -1,0 +1,3 @@
+module genPipe (clk, reset, out, Q, rng);
+	
+endmodule

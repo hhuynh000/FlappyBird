@@ -1,0 +1,4 @@
+module counter (clk, reset, out);
+	input logic clk, reset;
+	output logic out;
+endmodule

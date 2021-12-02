@@ -1,0 +1,6 @@
+module scoreboard (score, led);
+	input logic [6:0] score;
+	input logic score;
+	
+	seg7 display (
+endmodule

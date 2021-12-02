@@ -1,0 +1,885 @@
+Analysis & Synthesis report for DE1_SoC
+Fri Jun 04 20:07:15 2021
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: LEDDriver:Driver
+ 12. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m7
+ 13. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m7|delayCounter:delay
+ 14. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m6
+ 15. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m6|delayCounter:delay
+ 16. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m5
+ 17. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m5|delayCounter:delay
+ 18. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m4
+ 19. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m4|delayCounter:delay
+ 20. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m3
+ 21. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m3|delayCounter:delay
+ 22. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m2
+ 23. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m2|delayCounter:delay
+ 24. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m1
+ 25. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m1|delayCounter:delay
+ 26. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m0
+ 27. Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m0|delayCounter:delay
+ 28. Parameter Settings for User Entity Instance: delayCounter:delay
+ 29. Port Connectivity Checks: "display:playfield|scoreboard:hex3"
+ 30. Port Connectivity Checks: "display:playfield|LED_4x2:m0"
+ 31. Port Connectivity Checks: "display:playfield|LED_4x2:m7"
+ 32. Port Connectivity Checks: "LEDDriver:Driver"
+ 33. Port Connectivity Checks: "clock_divider:divider"
+ 34. Post-Synthesis Netlist Statistics for Top Partition
+ 35. Elapsed Time Per Partition
+ 36. Analysis & Synthesis Messages
+ 37. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Fri Jun 04 20:07:15 2021       ;
+; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
+; Revision Name                   ; DE1_SoC                                     ;
+; Top-level Entity Name           ; DE1_SoC                                     ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 295                                         ;
+; Total pins                      ; 103                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; DE1_SoC            ; DE1_SoC            ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; State Machine Processing                                                        ; User-Encoded       ; Auto               ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; OpenCore Plus hardware evaluation                                               ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                  ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
+; mux2_1.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/mux2_1.sv        ;         ;
+; DE1_SoC.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv       ;         ;
+; LEDDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LEDDriver.sv     ;         ;
+; clock_divider.sv                 ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/clock_divider.sv ;         ;
+; counter.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/counter.sv       ;         ;
+; LED_4x2.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LED_4x2.sv       ;         ;
+; LFSR.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LFSR.sv          ;         ;
+; genPipe.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/genPipe.sv       ;         ;
+; delayCounter.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/delayCounter.sv  ;         ;
+; pipeMap.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/pipeMap.sv       ;         ;
+; register_1x16.sv                 ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/register_1x16.sv ;         ;
+; display.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/display.sv       ;         ;
+; seg7.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/seg7.sv          ;         ;
+; scoreboard.sv                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/scoreboard.sv    ;         ;
+; gameCheck.sv                     ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/gameCheck.sv     ;         ;
+; start.sv                         ; yes             ; User SystemVerilog HDL File  ; C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/start.sv         ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                            ;
++---------------------------------------------+------------------------------------------+
+; Resource                                    ; Usage                                    ;
++---------------------------------------------+------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 271                                      ;
+;                                             ;                                          ;
+; Combinational ALUT usage for logic          ; 324                                      ;
+;     -- 7 input functions                    ; 6                                        ;
+;     -- 6 input functions                    ; 173                                      ;
+;     -- 5 input functions                    ; 59                                       ;
+;     -- 4 input functions                    ; 24                                       ;
+;     -- <=3 input functions                  ; 62                                       ;
+;                                             ;                                          ;
+; Dedicated logic registers                   ; 295                                      ;
+;                                             ;                                          ;
+; I/O pins                                    ; 103                                      ;
+;                                             ;                                          ;
+; Total DSP Blocks                            ; 0                                        ;
+;                                             ;                                          ;
+; Maximum fan-out node                        ; clock_divider:divider|divided_clocks[14] ;
+; Maximum fan-out                             ; 281                                      ;
+; Total fan-out                               ; 2826                                     ;
+; Average fan-out                             ; 3.43                                     ;
++---------------------------------------------+------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                       ;
++----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                      ; Entity Name   ; Library Name ;
++----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------+---------------+--------------+
+; |DE1_SoC                               ; 324 (0)             ; 295 (0)                   ; 0                 ; 0          ; 103  ; 0            ; |DE1_SoC                                                 ; DE1_SoC       ; work         ;
+;    |LEDDriver:Driver|                  ; 129 (129)           ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|LEDDriver:Driver                                ; LEDDriver     ; work         ;
+;    |clock_divider:divider|             ; 15 (15)             ; 15 (15)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|clock_divider:divider                           ; clock_divider ; work         ;
+;    |counter:counter18|                 ; 9 (9)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|counter:counter18                               ; counter       ; work         ;
+;    |delayCounter:delay|                ; 14 (14)             ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|delayCounter:delay                              ; delayCounter  ; work         ;
+;    |display:playfield|                 ; 110 (2)             ; 44 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield                               ; display       ; work         ;
+;       |LED_4x2:m0|                     ; 10 (1)              ; 10 (2)                    ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m0                    ; LED_4x2       ; work         ;
+;          |delayCounter:delay|          ; 8 (8)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m0|delayCounter:delay ; delayCounter  ; work         ;
+;          |mux2_1:mux_in1|              ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m0|mux2_1:mux_in1     ; mux2_1        ; work         ;
+;       |LED_4x2:m1|                     ; 3 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m1                    ; LED_4x2       ; work         ;
+;          |mux2_1:mux_in1|              ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m1|mux2_1:mux_in1     ; mux2_1        ; work         ;
+;       |LED_4x2:m2|                     ; 3 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m2                    ; LED_4x2       ; work         ;
+;          |mux2_1:mux_in1|              ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m2|mux2_1:mux_in1     ; mux2_1        ; work         ;
+;       |LED_4x2:m3|                     ; 3 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m3                    ; LED_4x2       ; work         ;
+;          |mux2_1:mux_in1|              ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m3|mux2_1:mux_in1     ; mux2_1        ; work         ;
+;       |LED_4x2:m4|                     ; 2 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m4                    ; LED_4x2       ; work         ;
+;          |mux2_1:mux_in1|              ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m4|mux2_1:mux_in1     ; mux2_1        ; work         ;
+;       |LED_4x2:m5|                     ; 2 (1)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m5                    ; LED_4x2       ; work         ;
+;          |mux2_1:mux_in1|              ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m5|mux2_1:mux_in1     ; mux2_1        ; work         ;
+;       |LED_4x2:m6|                     ; 3 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m6                    ; LED_4x2       ; work         ;
+;          |mux2_1:mux_in1|              ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m6|mux2_1:mux_in1     ; mux2_1        ; work         ;
+;       |LED_4x2:m7|                     ; 6 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m7                    ; LED_4x2       ; work         ;
+;          |delayCounter:delay|          ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m7|delayCounter:delay ; delayCounter  ; work         ;
+;          |mux2_1:mux_in1|              ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|LED_4x2:m7|mux2_1:mux_in1     ; mux2_1        ; work         ;
+;       |gameCheck:scoreCheck|           ; 19 (19)             ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|gameCheck:scoreCheck          ; gameCheck     ; work         ;
+;       |scoreboard:hex1|                ; 19 (12)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|scoreboard:hex1               ; scoreboard    ; work         ;
+;          |seg7:display|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|scoreboard:hex1|seg7:display  ; seg7          ; work         ;
+;       |scoreboard:hex2|                ; 19 (12)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|scoreboard:hex2               ; scoreboard    ; work         ;
+;          |seg7:display|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|scoreboard:hex2|seg7:display  ; seg7          ; work         ;
+;       |scoreboard:hex3|                ; 19 (12)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|scoreboard:hex3               ; scoreboard    ; work         ;
+;          |seg7:display|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|display:playfield|scoreboard:hex3|seg7:display  ; seg7          ; work         ;
+;    |genPipe:pipe|                      ; 45 (23)             ; 9 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|genPipe:pipe                                    ; genPipe       ; work         ;
+;       |LFSR:genNum|                    ; 2 (2)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|genPipe:pipe|LFSR:genNum                        ; LFSR          ; work         ;
+;       |pipeMap:pipe|                   ; 20 (20)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|genPipe:pipe|pipeMap:pipe                       ; pipeMap       ; work         ;
+;    |register_1x16:eachShift[0].shift|  ; 0 (0)               ; 15 (15)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[0].shift                ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[10].shift| ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[10].shift               ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[11].shift| ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[11].shift               ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[12].shift| ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[12].shift               ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[13].shift| ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[13].shift               ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[2].shift|  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[2].shift                ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[3].shift|  ; 1 (1)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[3].shift                ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[4].shift|  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[4].shift                ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[5].shift|  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[5].shift                ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[6].shift|  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[6].shift                ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[7].shift|  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[7].shift                ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[8].shift|  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[8].shift                ; register_1x16 ; work         ;
+;    |register_1x16:eachShift[9].shift|  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|register_1x16:eachShift[9].shift                ; register_1x16 ; work         ;
+;    |start:game|                        ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|start:game                                      ; start         ; work         ;
++----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                              ;
++----------------------------------------------------------+----------------------------------------------------------------------+
+; Register name                                            ; Reason for Removal                                                   ;
++----------------------------------------------------------+----------------------------------------------------------------------+
+; start:game|ps[1..31]                                     ; Stuck at GND due to stuck port data_in                               ;
+; register_1x16:eachShift[14].shift|Q[8]                   ; Merged with register_1x16:eachShift[0].shift|Q[8]                    ;
+; register_1x16:eachShift[15].shift|Q[8]                   ; Merged with register_1x16:eachShift[0].shift|Q[8]                    ;
+; register_1x16:eachShift[1].shift|Q[8]                    ; Merged with register_1x16:eachShift[0].shift|Q[8]                    ;
+; display:playfield|gameCheck:scoreCheck|ps[2..9,11..31]   ; Merged with display:playfield|gameCheck:scoreCheck|ps[10]            ;
+; register_1x16:eachShift[14].shift|Q[5]                   ; Merged with register_1x16:eachShift[0].shift|Q[5]                    ;
+; register_1x16:eachShift[15].shift|Q[5]                   ; Merged with register_1x16:eachShift[0].shift|Q[5]                    ;
+; register_1x16:eachShift[1].shift|Q[5]                    ; Merged with register_1x16:eachShift[0].shift|Q[5]                    ;
+; register_1x16:eachShift[14].shift|Q[4]                   ; Merged with register_1x16:eachShift[0].shift|Q[4]                    ;
+; register_1x16:eachShift[15].shift|Q[4]                   ; Merged with register_1x16:eachShift[0].shift|Q[4]                    ;
+; register_1x16:eachShift[1].shift|Q[4]                    ; Merged with register_1x16:eachShift[0].shift|Q[4]                    ;
+; register_1x16:eachShift[14].shift|Q[3]                   ; Merged with register_1x16:eachShift[0].shift|Q[3]                    ;
+; register_1x16:eachShift[15].shift|Q[3]                   ; Merged with register_1x16:eachShift[0].shift|Q[3]                    ;
+; register_1x16:eachShift[1].shift|Q[3]                    ; Merged with register_1x16:eachShift[0].shift|Q[3]                    ;
+; register_1x16:eachShift[14].shift|Q[2]                   ; Merged with register_1x16:eachShift[0].shift|Q[2]                    ;
+; register_1x16:eachShift[15].shift|Q[2]                   ; Merged with register_1x16:eachShift[0].shift|Q[2]                    ;
+; register_1x16:eachShift[1].shift|Q[2]                    ; Merged with register_1x16:eachShift[0].shift|Q[2]                    ;
+; register_1x16:eachShift[14].shift|Q[1]                   ; Merged with register_1x16:eachShift[0].shift|Q[1]                    ;
+; register_1x16:eachShift[15].shift|Q[1]                   ; Merged with register_1x16:eachShift[0].shift|Q[1]                    ;
+; register_1x16:eachShift[1].shift|Q[1]                    ; Merged with register_1x16:eachShift[0].shift|Q[1]                    ;
+; register_1x16:eachShift[0].shift|Q[0]                    ; Merged with genPipe:pipe|ps[0]                                       ;
+; register_1x16:eachShift[14].shift|Q[0]                   ; Merged with genPipe:pipe|ps[0]                                       ;
+; register_1x16:eachShift[15].shift|Q[0]                   ; Merged with genPipe:pipe|ps[0]                                       ;
+; register_1x16:eachShift[1].shift|Q[0]                    ; Merged with genPipe:pipe|ps[0]                                       ;
+; display:playfield|LED_4x2:m1|delayCounter:delay|count[6] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[6] ;
+; display:playfield|LED_4x2:m2|delayCounter:delay|count[6] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[6] ;
+; display:playfield|LED_4x2:m3|delayCounter:delay|count[6] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[6] ;
+; display:playfield|LED_4x2:m4|delayCounter:delay|count[6] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[6] ;
+; display:playfield|LED_4x2:m5|delayCounter:delay|count[6] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[6] ;
+; display:playfield|LED_4x2:m6|delayCounter:delay|count[6] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[6] ;
+; display:playfield|LED_4x2:m7|delayCounter:delay|count[6] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[6] ;
+; display:playfield|LED_4x2:m1|delayCounter:delay|count[5] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[5] ;
+; display:playfield|LED_4x2:m2|delayCounter:delay|count[5] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[5] ;
+; display:playfield|LED_4x2:m3|delayCounter:delay|count[5] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[5] ;
+; display:playfield|LED_4x2:m4|delayCounter:delay|count[5] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[5] ;
+; display:playfield|LED_4x2:m5|delayCounter:delay|count[5] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[5] ;
+; display:playfield|LED_4x2:m6|delayCounter:delay|count[5] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[5] ;
+; display:playfield|LED_4x2:m7|delayCounter:delay|count[5] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[5] ;
+; display:playfield|LED_4x2:m1|delayCounter:delay|count[4] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[4] ;
+; display:playfield|LED_4x2:m2|delayCounter:delay|count[4] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[4] ;
+; display:playfield|LED_4x2:m3|delayCounter:delay|count[4] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[4] ;
+; display:playfield|LED_4x2:m4|delayCounter:delay|count[4] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[4] ;
+; display:playfield|LED_4x2:m5|delayCounter:delay|count[4] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[4] ;
+; display:playfield|LED_4x2:m6|delayCounter:delay|count[4] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[4] ;
+; display:playfield|LED_4x2:m7|delayCounter:delay|count[4] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[4] ;
+; display:playfield|LED_4x2:m1|delayCounter:delay|count[3] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[3] ;
+; display:playfield|LED_4x2:m2|delayCounter:delay|count[3] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[3] ;
+; display:playfield|LED_4x2:m3|delayCounter:delay|count[3] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[3] ;
+; display:playfield|LED_4x2:m4|delayCounter:delay|count[3] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[3] ;
+; display:playfield|LED_4x2:m5|delayCounter:delay|count[3] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[3] ;
+; display:playfield|LED_4x2:m6|delayCounter:delay|count[3] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[3] ;
+; display:playfield|LED_4x2:m7|delayCounter:delay|count[3] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[3] ;
+; display:playfield|LED_4x2:m1|delayCounter:delay|count[2] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[2] ;
+; display:playfield|LED_4x2:m2|delayCounter:delay|count[2] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[2] ;
+; display:playfield|LED_4x2:m3|delayCounter:delay|count[2] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[2] ;
+; display:playfield|LED_4x2:m4|delayCounter:delay|count[2] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[2] ;
+; display:playfield|LED_4x2:m5|delayCounter:delay|count[2] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[2] ;
+; display:playfield|LED_4x2:m6|delayCounter:delay|count[2] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[2] ;
+; display:playfield|LED_4x2:m7|delayCounter:delay|count[2] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[2] ;
+; display:playfield|LED_4x2:m1|delayCounter:delay|count[1] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[1] ;
+; display:playfield|LED_4x2:m2|delayCounter:delay|count[1] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[1] ;
+; display:playfield|LED_4x2:m3|delayCounter:delay|count[1] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[1] ;
+; display:playfield|LED_4x2:m4|delayCounter:delay|count[1] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[1] ;
+; display:playfield|LED_4x2:m5|delayCounter:delay|count[1] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[1] ;
+; display:playfield|LED_4x2:m6|delayCounter:delay|count[1] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[1] ;
+; display:playfield|LED_4x2:m7|delayCounter:delay|count[1] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[1] ;
+; display:playfield|LED_4x2:m1|delayCounter:delay|count[0] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[0] ;
+; display:playfield|LED_4x2:m2|delayCounter:delay|count[0] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[0] ;
+; display:playfield|LED_4x2:m3|delayCounter:delay|count[0] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[0] ;
+; display:playfield|LED_4x2:m4|delayCounter:delay|count[0] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[0] ;
+; display:playfield|LED_4x2:m5|delayCounter:delay|count[0] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[0] ;
+; display:playfield|LED_4x2:m6|delayCounter:delay|count[0] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[0] ;
+; display:playfield|LED_4x2:m7|delayCounter:delay|count[0] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[0] ;
+; display:playfield|LED_4x2:m1|delayCounter:delay|count[7] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[7] ;
+; display:playfield|LED_4x2:m2|delayCounter:delay|count[7] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[7] ;
+; display:playfield|LED_4x2:m3|delayCounter:delay|count[7] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[7] ;
+; display:playfield|LED_4x2:m4|delayCounter:delay|count[7] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[7] ;
+; display:playfield|LED_4x2:m5|delayCounter:delay|count[7] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[7] ;
+; display:playfield|LED_4x2:m6|delayCounter:delay|count[7] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[7] ;
+; display:playfield|LED_4x2:m7|delayCounter:delay|count[7] ; Merged with display:playfield|LED_4x2:m0|delayCounter:delay|count[7] ;
+; genPipe:pipe|ps[1..9,11..31]                             ; Merged with genPipe:pipe|ps[10]                                      ;
+; register_1x16:eachShift[14].shift|Q[6]                   ; Merged with register_1x16:eachShift[0].shift|Q[6]                    ;
+; register_1x16:eachShift[15].shift|Q[6]                   ; Merged with register_1x16:eachShift[0].shift|Q[6]                    ;
+; register_1x16:eachShift[1].shift|Q[6]                    ; Merged with register_1x16:eachShift[0].shift|Q[6]                    ;
+; register_1x16:eachShift[14].shift|Q[7]                   ; Merged with register_1x16:eachShift[0].shift|Q[7]                    ;
+; register_1x16:eachShift[15].shift|Q[7]                   ; Merged with register_1x16:eachShift[0].shift|Q[7]                    ;
+; register_1x16:eachShift[1].shift|Q[7]                    ; Merged with register_1x16:eachShift[0].shift|Q[7]                    ;
+; register_1x16:eachShift[14].shift|Q[9]                   ; Merged with register_1x16:eachShift[0].shift|Q[9]                    ;
+; register_1x16:eachShift[15].shift|Q[9]                   ; Merged with register_1x16:eachShift[0].shift|Q[9]                    ;
+; register_1x16:eachShift[1].shift|Q[9]                    ; Merged with register_1x16:eachShift[0].shift|Q[9]                    ;
+; register_1x16:eachShift[14].shift|Q[15]                  ; Merged with register_1x16:eachShift[0].shift|Q[15]                   ;
+; register_1x16:eachShift[15].shift|Q[15]                  ; Merged with register_1x16:eachShift[0].shift|Q[15]                   ;
+; register_1x16:eachShift[1].shift|Q[15]                   ; Merged with register_1x16:eachShift[0].shift|Q[15]                   ;
+; register_1x16:eachShift[14].shift|Q[10]                  ; Merged with register_1x16:eachShift[0].shift|Q[10]                   ;
+; register_1x16:eachShift[15].shift|Q[10]                  ; Merged with register_1x16:eachShift[0].shift|Q[10]                   ;
+; register_1x16:eachShift[1].shift|Q[10]                   ; Merged with register_1x16:eachShift[0].shift|Q[10]                   ;
+; register_1x16:eachShift[14].shift|Q[11]                  ; Merged with register_1x16:eachShift[0].shift|Q[11]                   ;
+; register_1x16:eachShift[15].shift|Q[11]                  ; Merged with register_1x16:eachShift[0].shift|Q[11]                   ;
+; register_1x16:eachShift[1].shift|Q[11]                   ; Merged with register_1x16:eachShift[0].shift|Q[11]                   ;
+; register_1x16:eachShift[14].shift|Q[12]                  ; Merged with register_1x16:eachShift[0].shift|Q[12]                   ;
+; register_1x16:eachShift[15].shift|Q[12]                  ; Merged with register_1x16:eachShift[0].shift|Q[12]                   ;
+; register_1x16:eachShift[1].shift|Q[12]                   ; Merged with register_1x16:eachShift[0].shift|Q[12]                   ;
+; register_1x16:eachShift[14].shift|Q[13]                  ; Merged with register_1x16:eachShift[0].shift|Q[13]                   ;
+; register_1x16:eachShift[15].shift|Q[13]                  ; Merged with register_1x16:eachShift[0].shift|Q[13]                   ;
+; register_1x16:eachShift[1].shift|Q[13]                   ; Merged with register_1x16:eachShift[0].shift|Q[13]                   ;
+; register_1x16:eachShift[14].shift|Q[14]                  ; Merged with register_1x16:eachShift[0].shift|Q[14]                   ;
+; register_1x16:eachShift[15].shift|Q[14]                  ; Merged with register_1x16:eachShift[0].shift|Q[14]                   ;
+; register_1x16:eachShift[1].shift|Q[14]                   ; Merged with register_1x16:eachShift[0].shift|Q[14]                   ;
+; genPipe:pipe|ps[10]                                      ; Stuck at GND due to stuck port data_in                               ;
+; display:playfield|gameCheck:scoreCheck|ps[10]            ; Stuck at GND due to stuck port data_in                               ;
+; clock_divider:divider|divided_clocks[15..31]             ; Lost fanout                                                          ;
+; Total Number of Removed Registers = 214                  ;                                                                      ;
++----------------------------------------------------------+----------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 295   ;
+; Number of registers using Synchronous Clear  ; 253   ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 224   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; 3:1                ; 195 bits  ; 390 LEs       ; 0 LEs                ; 390 LEs                ; Yes        ; |DE1_SoC|register_1x16:eachShift[3].shift|Q[4]        ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE1_SoC|counter:counter18|count[4]                   ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE1_SoC|display:playfield|gameCheck:scoreCheck|ps[0] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |DE1_SoC|genPipe:pipe|LFSR:genNum|Q[4]                ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |DE1_SoC|display:playfield|scoreboard:hex1|score[4]   ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |DE1_SoC|display:playfield|scoreboard:hex2|score[0]   ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |DE1_SoC|display:playfield|scoreboard:hex3|score[0]   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE1_SoC|LEDDriver:Driver|Mux25                       ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |DE1_SoC|genPipe:pipe|pipeMap:pipe|topPipe[3]         ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |DE1_SoC|LEDDriver:Driver|Mux25                       ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 14 LEs               ; 2 LEs                  ; No         ; |DE1_SoC|LEDDriver:Driver|Mux25                       ;
+; 26:1               ; 16 bits   ; 272 LEs       ; 272 LEs              ; 0 LEs                  ; No         ; |DE1_SoC|LEDDriver:Driver|Mux4                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LEDDriver:Driver ;
++----------------+-------+--------------------------------------+
+; Parameter Name ; Value ; Type                                 ;
++----------------+-------+--------------------------------------+
+; FREQDIV        ; 0     ; Signed Integer                       ;
++----------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m7 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; CENTER         ; 0     ; Signed Integer                                   ;
+; TOP            ; 1     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m7|delayCounter:delay ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m6 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; CENTER         ; 0     ; Signed Integer                                   ;
+; TOP            ; 0     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m6|delayCounter:delay ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m5 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; CENTER         ; 0     ; Signed Integer                                   ;
+; TOP            ; 0     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m5|delayCounter:delay ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m4 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; CENTER         ; 1     ; Signed Integer                                   ;
+; TOP            ; 0     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m4|delayCounter:delay ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m3 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; CENTER         ; 0     ; Signed Integer                                   ;
+; TOP            ; 0     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m3|delayCounter:delay ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m2 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; CENTER         ; 0     ; Signed Integer                                   ;
+; TOP            ; 0     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m2|delayCounter:delay ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m1 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; CENTER         ; 0     ; Signed Integer                                   ;
+; TOP            ; 0     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m1|delayCounter:delay ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m0 ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; CENTER         ; 0     ; Signed Integer                                   ;
+; TOP            ; 0     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: display:playfield|LED_4x2:m0|delayCounter:delay ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: delayCounter:delay ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; WIDTH          ; 10    ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display:playfield|scoreboard:hex3"                                                     ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; incrOut ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "display:playfield|LED_4x2:m0" ;
++--------+-------+----------+------------------------------+
+; Port   ; Type  ; Severity ; Details                      ;
++--------+-------+----------+------------------------------+
+; bottom ; Input ; Info     ; Stuck at GND                 ;
++--------+-------+----------+------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "display:playfield|LED_4x2:m7" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; top  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "LEDDriver:Driver"  ;
++-------------+-------+----------+--------------+
+; Port        ; Type  ; Severity ; Details      ;
++-------------+-------+----------+--------------+
+; EnableCount ; Input ; Info     ; Stuck at VCC ;
++-------------+-------+----------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "clock_divider:divider"                                                                                ;
++------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                   ; Type   ; Severity ; Details                                                                             ;
++------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; divided_clocks[31..15] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; divided_clocks[13..0]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 295                         ;
+;     ENA SCLR          ; 224                         ;
+;     SCLR              ; 29                          ;
+;     SLD               ; 1                           ;
+;     plain             ; 41                          ;
+; arriav_lcell_comb     ; 329                         ;
+;     arith             ; 32                          ;
+;         1 data inputs ; 31                          ;
+;         2 data inputs ; 1                           ;
+;     extend            ; 6                           ;
+;         7 data inputs ; 6                           ;
+;     normal            ; 291                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 17                          ;
+;         3 data inputs ; 11                          ;
+;         4 data inputs ; 24                          ;
+;         5 data inputs ; 59                          ;
+;         6 data inputs ; 173                         ;
+; boundary_port         ; 103                         ;
+;                       ;                             ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.35                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+    Info: Processing started: Fri Jun 04 20:07:04 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 2 entities, in source file mux2_1.sv
+    Info (12023): Found entity 1: mux2_1 File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/mux2_1.sv Line: 1
+    Info (12023): Found entity 2: mux2_1_testbench File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/mux2_1.sv Line: 8
+Info (12021): Found 2 design units, including 2 entities, in source file de1_soc.sv
+    Info (12023): Found entity 1: DE1_SoC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 6
+    Info (12023): Found entity 2: DE1_SoC_testbench File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 83
+Info (12021): Found 3 design units, including 3 entities, in source file leddriver.sv
+    Info (12023): Found entity 1: LEDDriver File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LEDDriver.sv Line: 13
+    Info (12023): Found entity 2: LEDDriver_Test File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LEDDriver.sv Line: 34
+    Info (12023): Found entity 3: LEDDriver_TestPhysical File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LEDDriver.sv Line: 71
+Info (12021): Found 1 design units, including 1 entities, in source file clock_divider.sv
+    Info (12023): Found entity 1: clock_divider File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/clock_divider.sv Line: 3
+Info (12021): Found 2 design units, including 2 entities, in source file counter.sv
+    Info (12023): Found entity 1: counter File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/counter.sv Line: 2
+    Info (12023): Found entity 2: counter_testbench File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/counter.sv Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file led_4x2.sv
+    Info (12023): Found entity 1: LED_4x2 File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LED_4x2.sv Line: 3
+Info (12021): Found 2 design units, including 2 entities, in source file lfsr.sv
+    Info (12023): Found entity 1: LFSR File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LFSR.sv Line: 3
+    Info (12023): Found entity 2: LFSR_testbench File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LFSR.sv Line: 27
+Info (12021): Found 2 design units, including 2 entities, in source file genpipe.sv
+    Info (12023): Found entity 1: genPipe File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/genPipe.sv Line: 2
+    Info (12023): Found entity 2: genPipe_testbench File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/genPipe.sv Line: 62
+Info (12021): Found 1 design units, including 1 entities, in source file delaycounter.sv
+    Info (12023): Found entity 1: delayCounter File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/delayCounter.sv Line: 4
+Info (12021): Found 2 design units, including 2 entities, in source file pipemap.sv
+    Info (12023): Found entity 1: pipeMap File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/pipeMap.sv Line: 4
+    Info (12023): Found entity 2: pipeMap_testbench File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/pipeMap.sv Line: 45
+Info (12021): Found 2 design units, including 2 entities, in source file register_1x16.sv
+    Info (12023): Found entity 1: register_1x16 File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/register_1x16.sv Line: 4
+    Info (12023): Found entity 2: register_1x16_testbench File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/register_1x16.sv Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file display.sv
+    Info (12023): Found entity 1: display File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/display.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file seg7.sv
+    Info (12023): Found entity 1: seg7 File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/seg7.sv Line: 3
+Info (12021): Found 2 design units, including 2 entities, in source file scoreboard.sv
+    Info (12023): Found entity 1: scoreboard File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/scoreboard.sv Line: 4
+    Info (12023): Found entity 2: scoreboard_testbench File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/scoreboard.sv Line: 30
+Info (12021): Found 1 design units, including 1 entities, in source file gamecheck.sv
+    Info (12023): Found entity 1: gameCheck File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/gameCheck.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file start.sv
+    Info (12023): Found entity 1: start File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/start.sv Line: 3
+Warning (10236): Verilog HDL Implicit Net warning at LED_4x2.sv(68): created implicit net for "sel" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LED_4x2.sv Line: 68
+Warning (10236): Verilog HDL Implicit Net warning at display.sv(52): created implicit net for "incrOut2" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/display.sv Line: 52
+Info (12127): Elaborating entity "DE1_SoC" for the top level hierarchy
+Warning (10034): Output port "LEDR" at DE1_SoC.sv(8) has no driver File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:divider" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 28
+Info (12128): Elaborating entity "LEDDriver" for hierarchy "LEDDriver:Driver" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 47
+Info (12128): Elaborating entity "display" for hierarchy "display:playfield" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 62
+Info (12128): Elaborating entity "LED_4x2" for hierarchy "display:playfield|LED_4x2:m7" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/display.sv Line: 14
+Info (12128): Elaborating entity "delayCounter" for hierarchy "display:playfield|LED_4x2:m7|delayCounter:delay" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LED_4x2.sv Line: 68
+Warning (10230): Verilog HDL assignment warning at delayCounter.sv(20): truncated value with size 32 to match size of target (8) File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/delayCounter.sv Line: 20
+Info (12128): Elaborating entity "mux2_1" for hierarchy "display:playfield|LED_4x2:m7|mux2_1:mux_in0" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/LED_4x2.sv Line: 69
+Info (12128): Elaborating entity "LED_4x2" for hierarchy "display:playfield|LED_4x2:m6" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/display.sv Line: 15
+Info (12128): Elaborating entity "LED_4x2" for hierarchy "display:playfield|LED_4x2:m4" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/display.sv Line: 17
+Info (12128): Elaborating entity "gameCheck" for hierarchy "display:playfield|gameCheck:scoreCheck" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/display.sv Line: 48
+Info (12128): Elaborating entity "scoreboard" for hierarchy "display:playfield|scoreboard:hex1" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/display.sv Line: 51
+Warning (10230): Verilog HDL assignment warning at scoreboard.sv(24): truncated value with size 32 to match size of target (5) File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/scoreboard.sv Line: 24
+Info (12128): Elaborating entity "seg7" for hierarchy "display:playfield|scoreboard:hex1|seg7:display" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/scoreboard.sv Line: 11
+Info (12128): Elaborating entity "start" for hierarchy "start:game" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 69
+Warning (10230): Verilog HDL assignment warning at start.sv(21): truncated value with size 32 to match size of target (1) File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/start.sv Line: 21
+Info (12128): Elaborating entity "delayCounter" for hierarchy "delayCounter:delay" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 70
+Warning (10230): Verilog HDL assignment warning at delayCounter.sv(20): truncated value with size 32 to match size of target (10) File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/delayCounter.sv Line: 20
+Info (12128): Elaborating entity "counter" for hierarchy "counter:counter18" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 71
+Warning (10230): Verilog HDL assignment warning at counter.sv(15): truncated value with size 32 to match size of target (5) File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/counter.sv Line: 15
+Info (12128): Elaborating entity "genPipe" for hierarchy "genPipe:pipe" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 72
+Info (12128): Elaborating entity "LFSR" for hierarchy "genPipe:pipe|LFSR:genNum" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/genPipe.sv Line: 16
+Info (12128): Elaborating entity "pipeMap" for hierarchy "genPipe:pipe|pipeMap:pipe" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/genPipe.sv Line: 17
+Warning (10230): Verilog HDL assignment warning at pipeMap.sv(20): truncated value with size 32 to match size of target (4) File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/pipeMap.sv Line: 20
+Warning (10230): Verilog HDL assignment warning at pipeMap.sv(21): truncated value with size 32 to match size of target (4) File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/pipeMap.sv Line: 21
+Warning (10230): Verilog HDL assignment warning at pipeMap.sv(23): truncated value with size 32 to match size of target (4) File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/pipeMap.sv Line: 23
+Warning (10230): Verilog HDL assignment warning at pipeMap.sv(24): truncated value with size 32 to match size of target (4) File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/pipeMap.sv Line: 24
+Info (12128): Elaborating entity "register_1x16" for hierarchy "register_1x16:eachShift[0].shift" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 77
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX3[0]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX3[3]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX3[4]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX3[5]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX3[6]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 7
+    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 8
+    Warning (13410): Pin "GPIO_1[0]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 11
+    Warning (13410): Pin "GPIO_1[4]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 11
+    Warning (13410): Pin "GPIO_1[11]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 11
+    Warning (13410): Pin "GPIO_1[15]" is stuck at GND File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 11
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 17 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/output_files/DE1_SoC.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 11 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 9
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/DE1_SoC.sv Line: 10
+Info (21057): Implemented 629 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 88 output pins
+    Info (21061): Implemented 526 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 61 warnings
+    Info: Peak virtual memory: 4833 megabytes
+    Info: Processing ended: Fri Jun 04 20:07:15 2021
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:26
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Tram/OneDrive - UW/EE 271/labs/Lab8/output_files/DE1_SoC.map.smsg.
+
+
